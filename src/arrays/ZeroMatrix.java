@@ -51,7 +51,6 @@ public class ZeroMatrix {
 	 * We can save space O(1)
 	 * by using first row and first column
 	 * as replacement to boolean arrays
-	 * Doesn't cover all the test cases
 	 * @param matrix
 	 */
 	private static void zeroMatrix(int[][] matrix){
@@ -81,17 +80,18 @@ public class ZeroMatrix {
 			}
 		}
 		
-		for(int i=0;i<matrix[0].length;i++){
+		for(int i=1;i<matrix.length;i++){
+			if(matrix[i][0]==0){
+				nullifyRow(matrix, i);
+			}
+		}
+		
+		for(int i=1;i<matrix[0].length;i++){
 			if(matrix[0][i]==0){
 				nullifyColumn(matrix, i);
 			}
 		}
 		
-		for(int i=0;i<matrix.length;i++){
-			if(matrix[i][0]==0){
-				nullifyRow(matrix, i);
-			}
-		}
 		if(rowHasZero){
 			nullifyRow(matrix, 0);
 		}
@@ -119,7 +119,7 @@ public class ZeroMatrix {
 		};
 		System.out.println("Matrix before nullifying ");
 		printMatrix(matrix);
-		setZeros(matrix);
+		zeroMatrix(matrix);
 		System.out.println("Zero Matrix");
 		printMatrix(matrix);
 		
