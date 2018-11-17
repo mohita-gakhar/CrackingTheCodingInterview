@@ -3,6 +3,7 @@ package stack_queue;
 import java.util.Arrays;
 import java.util.EmptyStackException;
 
+
 /**
  * Implement 3 stacks from one array
  * Here the capacity of each stack is fixed
@@ -83,5 +84,38 @@ public class FixedMultiStack {
 		System.out.println(Arrays.toString(values));
 	}
 	
+	public static void main(String [] args) throws Exception  {
+		FixedMultiStack stacks = new FixedMultiStack(4);
+		stacks.printStacks();
+		stacks.push(0, 10);
+		stacks.printStacks();
+		stacks.push(1, 20);
+		stacks.printStacks();
+		stacks.push(2, 30);
+		stacks.printStacks();
+		
+		stacks.push(1, 21);
+		stacks.printStacks();
+		stacks.push(0, 11);
+		stacks.printStacks();
+		stacks.push(0, 12);
+		stacks.printStacks();
+		
+		stacks.pop(0);
+		stacks.printStacks();
+		
+		stacks.push(2, 31);
+		stacks.printStacks();
+		
+		stacks.push(0, 13);
+		stacks.printStacks();
+		stacks.push(1, 22);
+		stacks.printStacks();
+		
+		stacks.push(2, 31);
+		stacks.printStacks();
+		stacks.push(2, 32);
+		stacks.printStacks();
+	}
 	
 }

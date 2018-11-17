@@ -13,11 +13,13 @@ public class Stack<T> {
 	}
 	
 	private StackNode<T> top;
+	private int size;
 	
 	public void push(T item){
 		StackNode<T> node = new StackNode<T>(item);
 		node.next=top;
 		top=node;
+		size++;
 	}
 	
 	public T pop() throws EmptyStackException{
@@ -26,6 +28,7 @@ public class Stack<T> {
 		}
 		T item = top.data;
 		top=top.next;
+		size--;
 		return item;
 	}
 	
@@ -38,5 +41,9 @@ public class Stack<T> {
 	
 	public boolean isEmpty(){
 		return top==null;
+	}
+	
+	public int size() {
+		return size;
 	}
 }
