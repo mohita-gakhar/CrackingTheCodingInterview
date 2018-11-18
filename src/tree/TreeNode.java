@@ -32,6 +32,27 @@ public class TreeNode {
 		}
 	}
 	
+	public boolean isBST() {
+		if(left != null) {
+			if(data < left.data || !left.isBST()) {
+				return false;
+			}
+		}
+		
+		if(right != null) {
+			if(data >= right.data || !right.isBST()) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public int height() {
+		int leftHeight= left != null? left.height(): 0;
+		int rightHeight = right!=null ? right.height() :0;
+		return 1+Math.max(leftHeight, rightHeight);
+	}
+	
 	public static TreeNode createMinimalBST(int[] arr) {
 		return createMinimalBST(arr ,0 ,arr.length-1);
 	}
@@ -45,6 +66,23 @@ public class TreeNode {
 		node.setLeftChild(createMinimalBST(arr, start, mid-1));
 		node.setRightChild(createMinimalBST(arr, mid+1, end));
 		return node;
+	}
+	
+	public void insertInOrder(int d) {
+		if(d <= data) {
+			if(left == null) {
+				setLeftChild(new TreeNode(d));
+			}else {
+				left.insertInOrder(d);
+			}
+		}else {
+			if(right == null) {
+				setRightChild(new TreeNode(d));
+			}else {
+				right.insertInOrder(d);
+			}
+		}
+		size++;
 	}
 
 }
