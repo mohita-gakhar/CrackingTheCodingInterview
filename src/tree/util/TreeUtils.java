@@ -44,6 +44,14 @@ public class TreeUtils {
 	public static int randomInt(int n) {
 		return (int) (Math.random() * n);
 	}
-
+	
+	public static TreeNode randomBST(int N, int min, int max) {
+		int d = randomIntInRange(min, max);
+		TreeNode root = new TreeNode(d);
+		for (int i = 1; i < N; i++) {
+			root.insertInOrder(randomIntInRange(min, max));
+		}
+		return root;
+	}
 
 }
